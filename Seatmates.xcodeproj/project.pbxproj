@@ -14,6 +14,7 @@
 		A64873CE262FEA3D009480D7 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64873CD262FEA3C009480D7 /* Message.swift */; };
 		A64873D2262FF5C2009480D7 /* NotificationCenter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64873D1262FF5C2009480D7 /* NotificationCenter+Extensions.swift */; };
 		A64873D526300BA8009480D7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A64873D426300BA8009480D7 /* README.md */; };
+		A64873D826300F6E009480D7 /* JoinRoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64873D726300F6E009480D7 /* JoinRoomCell.swift */; };
 		A6A21384262D5EC3002B0695 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A21383262D5EC3002B0695 /* AppDelegate.swift */; };
 		A6A21386262D5EC3002B0695 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A21385262D5EC3002B0695 /* SceneDelegate.swift */; };
 		A6A2138D262D5EC4002B0695 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6A2138C262D5EC4002B0695 /* Assets.xcassets */; };
@@ -39,6 +40,7 @@
 		A64873CD262FEA3C009480D7 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		A64873D1262FF5C2009480D7 /* NotificationCenter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+Extensions.swift"; sourceTree = "<group>"; };
 		A64873D426300BA8009480D7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		A64873D726300F6E009480D7 /* JoinRoomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRoomCell.swift; sourceTree = "<group>"; };
 		A6A21380262D5EC3002B0695 /* Seatmates.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Seatmates.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6A21383262D5EC3002B0695 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6A21385262D5EC3002B0695 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				A6A213AA262D66BD002B0695 /* HomeButton.swift */,
 				A64873BE262FB047009480D7 /* InputAccessoryView.swift */,
 				A64873C2262FB19E009480D7 /* RoomCell.swift */,
+				A64873D726300F6E009480D7 /* JoinRoomCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 				A64873C7262FB21A009480D7 /* MessageViewModel.swift in Sources */,
 				A6A213C3262D7725002B0695 /* Room.swift in Sources */,
 				A6A213A3262D6003002B0695 /* UIView+Extensions.swift in Sources */,
+				A64873D826300F6E009480D7 /* JoinRoomCell.swift in Sources */,
 				A6A2139E262D5FA7002B0695 /* HomeController.swift in Sources */,
 				A6A213BB262D6CAF002B0695 /* BLEIdentifiers.swift in Sources */,
 				A6A213B7262D6C0B002B0695 /* BLEPeripheral.swift in Sources */,

@@ -14,6 +14,12 @@ This app does not use storyboards except for the launch screen.
  
 ---
 
-## Demo
+## Demo  
+Chat Preview  
+![](/Previews/ChatSession.png)  
 
-![](/Previews/Preview.gif)
+Home/Main Screen  
+![](/Previews/Home.png)  
+
+Join Screen  
+![](/Previews/Join.png)  

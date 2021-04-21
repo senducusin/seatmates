@@ -23,7 +23,8 @@ class JoinRoomController: UITableViewController {
     
     // MARK: - Helpers
     private func setupTableView(){
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(JoinRoomCell.self, forCellReuseIdentifier: JoinRoomCell.cellIdentifier)
+        tableView.rowHeight = 50
     }
     
     private func setupUI(){
@@ -39,13 +40,16 @@ extension JoinRoomController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: JoinRoomCell.cellIdentifier, for: indexPath) as! JoinRoomCell
         
         let room = rooms[indexPath.row]
         
         if let roomName = room.advertisementData["kCBAdvDataLocalName"] as? String {
-            cell.textLabel?.text = roomName
+            cell.roomLabel.text = roomName
         }
+        
+        cell.rssiLabel.text = "\(room.rssi)"
+        
        
         return cell
     }
