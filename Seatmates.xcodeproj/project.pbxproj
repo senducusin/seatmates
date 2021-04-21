@@ -13,6 +13,7 @@
 		A64873CA262FC34D009480D7 /* UUID+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64873C9262FC34D009480D7 /* UUID+Extensions.swift */; };
 		A64873CE262FEA3D009480D7 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64873CD262FEA3C009480D7 /* Message.swift */; };
 		A64873D2262FF5C2009480D7 /* NotificationCenter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64873D1262FF5C2009480D7 /* NotificationCenter+Extensions.swift */; };
+		A64873D526300BA8009480D7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A64873D426300BA8009480D7 /* README.md */; };
 		A6A21384262D5EC3002B0695 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A21383262D5EC3002B0695 /* AppDelegate.swift */; };
 		A6A21386262D5EC3002B0695 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A21385262D5EC3002B0695 /* SceneDelegate.swift */; };
 		A6A2138D262D5EC4002B0695 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6A2138C262D5EC4002B0695 /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 		A64873C9262FC34D009480D7 /* UUID+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UUID+Extensions.swift"; sourceTree = "<group>"; };
 		A64873CD262FEA3C009480D7 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		A64873D1262FF5C2009480D7 /* NotificationCenter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+Extensions.swift"; sourceTree = "<group>"; };
+		A64873D426300BA8009480D7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A6A21380262D5EC3002B0695 /* Seatmates.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Seatmates.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6A21383262D5EC3002B0695 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6A21385262D5EC3002B0695 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 		A6A21377262D5EC3002B0695 = {
 			isa = PBXGroup;
 			children = (
+				A64873D426300BA8009480D7 /* README.md */,
 				A6A21382262D5EC3002B0695 /* Seatmates */,
 				A6A21381262D5EC3002B0695 /* Products */,
 			);
@@ -225,6 +228,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A64873D526300BA8009480D7 /* README.md in Resources */,
 				A6A21390262D5EC4002B0695 /* LaunchScreen.storyboard in Resources */,
 				A6A2138D262D5EC4002B0695 /* Assets.xcassets in Resources */,
 			);

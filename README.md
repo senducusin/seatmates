@@ -1,29 +1,19 @@
-# README #
+**Seatmates**
 
-This README would normally document whatever steps are necessary to get your application up and running.
+An app that demonstrates the use of CoreBluetooth's Peripheral and Central modes.
 
-### What is this repository for? ###
+This app does not use storyboards except for the launch screen. 
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+---
 
-### How do I get set up? ###
+## Features
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+- Create a chat room  
+- Join a created chat room via Bluetooth  
+- Send messages using a full blown chat screen  
+ 
+---
 
-### Contribution guidelines ###
+## Demo
 
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+![](/Previews/Preview.gif)
