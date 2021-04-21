@@ -59,13 +59,11 @@ extension JoinRoomController {
 
 extension JoinRoomController: BLECentralManagerDelegate{
     func connectionStatusDidUpdate(status: Bool) {
-        let controller = RoomController()
+        let user = UUID.generateRoomID()
+        let controller = RoomController(user: user, roomAdmin: false)
         navigationController?.pushViewController(controller, animated: true)
     }
     
-    func didReceiveNewMessage(message: Message) {
-        
-    }
     
     func didUpdateRoom(rooms: [Room]) {
         self.rooms = rooms

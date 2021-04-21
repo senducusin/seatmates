@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		A64873BF262FB047009480D7 /* InputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64873BE262FB047009480D7 /* InputAccessoryView.swift */; };
+		A64873C3262FB19E009480D7 /* RoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64873C2262FB19E009480D7 /* RoomCell.swift */; };
+		A64873C7262FB21A009480D7 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64873C6262FB21A009480D7 /* MessageViewModel.swift */; };
+		A64873CA262FC34D009480D7 /* UUID+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64873C9262FC34D009480D7 /* UUID+Extensions.swift */; };
+		A64873CE262FEA3D009480D7 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64873CD262FEA3C009480D7 /* Message.swift */; };
+		A64873D2262FF5C2009480D7 /* NotificationCenter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64873D1262FF5C2009480D7 /* NotificationCenter+Extensions.swift */; };
 		A6A21384262D5EC3002B0695 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A21383262D5EC3002B0695 /* AppDelegate.swift */; };
 		A6A21386262D5EC3002B0695 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A21385262D5EC3002B0695 /* SceneDelegate.swift */; };
 		A6A2138D262D5EC4002B0695 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6A2138C262D5EC4002B0695 /* Assets.xcassets */; };
@@ -20,13 +25,18 @@
 		A6A213B4262D6BB8002B0695 /* BLECentral.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A213B3262D6BB8002B0695 /* BLECentral.swift */; };
 		A6A213B7262D6C0B002B0695 /* BLEPeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A213B6262D6C0B002B0695 /* BLEPeripheral.swift */; };
 		A6A213BB262D6CAF002B0695 /* BLEIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A213BA262D6CAF002B0695 /* BLEIdentifiers.swift */; };
-		A6A213BF262D755B002B0695 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A213BE262D755B002B0695 /* Message.swift */; };
+		A6A213BF262D755B002B0695 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A213BE262D755B002B0695 /* Conversation.swift */; };
 		A6A213C3262D7725002B0695 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A213C2262D7725002B0695 /* Room.swift */; };
 		A6A213C6262D79BB002B0695 /* JoinRoomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A213C5262D79BB002B0695 /* JoinRoomController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A64873BE262FB047009480D7 /* InputAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputAccessoryView.swift; sourceTree = "<group>"; };
+		A64873C2262FB19E009480D7 /* RoomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomCell.swift; sourceTree = "<group>"; };
+		A64873C6262FB21A009480D7 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
+		A64873C9262FC34D009480D7 /* UUID+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UUID+Extensions.swift"; sourceTree = "<group>"; };
+		A64873CD262FEA3C009480D7 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		A64873D1262FF5C2009480D7 /* NotificationCenter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+Extensions.swift"; sourceTree = "<group>"; };
 		A6A21380262D5EC3002B0695 /* Seatmates.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Seatmates.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6A21383262D5EC3002B0695 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6A21385262D5EC3002B0695 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,7 +51,7 @@
 		A6A213B3262D6BB8002B0695 /* BLECentral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLECentral.swift; sourceTree = "<group>"; };
 		A6A213B6262D6C0B002B0695 /* BLEPeripheral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEPeripheral.swift; sourceTree = "<group>"; };
 		A6A213BA262D6CAF002B0695 /* BLEIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEIdentifiers.swift; sourceTree = "<group>"; };
-		A6A213BE262D755B002B0695 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		A6A213BE262D755B002B0695 /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
 		A6A213C2262D7725002B0695 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		A6A213C5262D79BB002B0695 /* JoinRoomController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRoomController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -57,6 +67,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A64873C5262FB1F0009480D7 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				A64873C6262FB21A009480D7 /* MessageViewModel.swift */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
 		A6A21377262D5EC3002B0695 = {
 			isa = PBXGroup;
 			children = (
@@ -76,6 +94,7 @@
 		A6A21382262D5EC3002B0695 /* Seatmates */ = {
 			isa = PBXGroup;
 			children = (
+				A64873C5262FB1F0009480D7 /* View Models */,
 				A6A213BD262D754B002B0695 /* Models */,
 				A6A213B9262D6C8F002B0695 /* Resources */,
 				A6A213B2262D6BA2002B0695 /* Services */,
@@ -105,6 +124,8 @@
 			isa = PBXGroup;
 			children = (
 				A6A213A2262D6003002B0695 /* UIView+Extensions.swift */,
+				A64873C9262FC34D009480D7 /* UUID+Extensions.swift */,
+				A64873D1262FF5C2009480D7 /* NotificationCenter+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -115,6 +136,7 @@
 				A6A213A6262D63F7002B0695 /* DividerView.swift */,
 				A6A213AA262D66BD002B0695 /* HomeButton.swift */,
 				A64873BE262FB047009480D7 /* InputAccessoryView.swift */,
+				A64873C2262FB19E009480D7 /* RoomCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -139,8 +161,9 @@
 		A6A213BD262D754B002B0695 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A6A213BE262D755B002B0695 /* Message.swift */,
+				A6A213BE262D755B002B0695 /* Conversation.swift */,
 				A6A213C2262D7725002B0695 /* Room.swift */,
+				A64873CD262FEA3C009480D7 /* Message.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -215,18 +238,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6A21384262D5EC3002B0695 /* AppDelegate.swift in Sources */,
+				A64873CA262FC34D009480D7 /* UUID+Extensions.swift in Sources */,
 				A6A21386262D5EC3002B0695 /* SceneDelegate.swift in Sources */,
+				A64873C7262FB21A009480D7 /* MessageViewModel.swift in Sources */,
 				A6A213C3262D7725002B0695 /* Room.swift in Sources */,
 				A6A213A3262D6003002B0695 /* UIView+Extensions.swift in Sources */,
 				A6A2139E262D5FA7002B0695 /* HomeController.swift in Sources */,
 				A6A213BB262D6CAF002B0695 /* BLEIdentifiers.swift in Sources */,
 				A6A213B7262D6C0B002B0695 /* BLEPeripheral.swift in Sources */,
-				A6A213BF262D755B002B0695 /* Message.swift in Sources */,
+				A6A213BF262D755B002B0695 /* Conversation.swift in Sources */,
+				A64873CE262FEA3D009480D7 /* Message.swift in Sources */,
 				A64873BF262FB047009480D7 /* InputAccessoryView.swift in Sources */,
 				A6A213C6262D79BB002B0695 /* JoinRoomController.swift in Sources */,
 				A6A213AB262D66BD002B0695 /* HomeButton.swift in Sources */,
 				A6A213AE262D687F002B0695 /* RoomController.swift in Sources */,
+				A64873D2262FF5C2009480D7 /* NotificationCenter+Extensions.swift in Sources */,
 				A6A213A7262D63F7002B0695 /* DividerView.swift in Sources */,
+				A64873C3262FB19E009480D7 /* RoomCell.swift in Sources */,
 				A6A213B4262D6BB8002B0695 /* BLECentral.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,13 +10,12 @@ import CoreBluetooth
 
 protocol BLECentralManagerDelegate: class {
     func connectionStatusDidUpdate(status: Bool)
-    func didReceiveNewMessage(message:Message)
     func didUpdateRoom(rooms:[Room])
 }
-
 class BLECentralManager {
     static let shared = BLECentralManager()
     private var bleCentral: BLECentral!
+    var onReceivedMessage:((Message)->())?
     
     weak var delegate: BLECentralManagerDelegate?
     
@@ -31,9 +30,13 @@ class BLECentralManager {
             self?.delegate?.didUpdateRoom(rooms: rooms)
         }
         
-        bleCentral.onReceivedMessage = { [weak self] message in
-            self?.delegate?.didReceiveNewMessage(message: message)
+        bleCentral.onReceivedMessage = { newMessage in
+            NotificationCenter.default
+                .post(name: NSNotification.Name.newMessageFromCentral,
+                      object: nil,
+                      userInfo: ["userInfo":newMessage])
         }
+        
     }
     
     func connectPeripheral(at index:Int){
@@ -44,6 +47,11 @@ class BLECentralManager {
         bleCentral.sendMessage(withMessage: message)
     }
     
+    func getRoomName()->String? {
+        return bleCentral.connectedRoomID
+    }
+    
+    
 }
 
 class BLECentral: NSObject{
@@ -53,8 +61,9 @@ class BLECentral: NSObject{
     private let decoder = JSONDecoder()
     private let encoder = JSONEncoder()
     private var seatmateCharacteristic: CBCharacteristic?
-    private var connectedRoom: CBPeripheral?
+    private var connectedPeripheral: CBPeripheral?
     
+    var connectedRoomID: String?
     var onReceivedMessage: ((Message)->Void)?
     var connectionStatus: ((Bool)->Void)?
     var onDiscovered:(([Room])->Void)?
@@ -79,22 +88,30 @@ class BLECentral: NSObject{
               index < discoveredRooms.count else { return }
         
         manager?.stopScan()
-        manager?.connect(discoveredRooms[index].peripheral, options: nil)
+        
+        let room = discoveredRooms[index]
+        
+        manager?.connect(room.peripheral, options: nil)
+        
+        if let roomId = room.advertisementData["kCBAdvDataLocalName"] as? String {
+            connectedRoomID = roomId
+        }
     }
     
     func sendMessage(withMessage message:Message){
-        guard let peripheral = connectedRoom else {
-            print("xxxx")
-            return}
-        guard  let characteristic = seatmateCharacteristic else {
-            print("uuuu")
-            return}
+        print("DEBUG: trying to send")
         
-        print("sending??")
+        guard let peripheral = connectedPeripheral,
+              let characteristic = seatmateCharacteristic else {
+            print("DEBUG: error sending!")
+            return
+        }
         
         if let payload = try? encoder.encode(message){
-            print("sending?")
+            print("DEBUG: sending?")
             peripheral.writeValue(payload, for: characteristic, type: .withoutResponse)
+        }else{
+            print("DEBUG: error sending!")
         }
     }
 }
@@ -102,9 +119,7 @@ class BLECentral: NSObject{
 // MARK: - CBCentralManagerDelegate
 extension BLECentral:CBCentralManagerDelegate {
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        
-        print("DEBUG: did discover \(peripheral)")
-        
+
         if let existingPeripheral = discoveredRooms.first(where: {$0.peripheral == peripheral}){
             existingPeripheral.advertisementData = advertisementData
             existingPeripheral.rssi = RSSI
@@ -114,11 +129,8 @@ extension BLECentral:CBCentralManagerDelegate {
             discoveredRooms.append(discoveredRoom)
             
         }
-        
         onDiscovered?(discoveredRooms)
-        
     }
-    
     
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         if central.state == .poweredOn {
@@ -129,16 +141,16 @@ extension BLECentral:CBCentralManagerDelegate {
     }
     
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        connectedRoom = peripheral
-        connectedRoom?.delegate = self
+        connectedPeripheral = peripheral
+        connectedPeripheral?.delegate = self
         
         // nil ~> all available services on the peripheral
-        connectedRoom?.discoverServices([CBUUID(string: BLEIdentifiers.serviceIdentifierUUID)])
+        connectedPeripheral?.discoverServices([CBUUID(string: BLEIdentifiers.serviceIdentifierUUID)])
         connectionStatus?(true)
     }
     
     func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
-        print("DEBUG: didFailToConnect \(peripheral.name)")
+        connectedRoomID = nil
     }
 }
 
@@ -174,7 +186,7 @@ extension BLECentral: CBPeripheralDelegate {
             }
             
             if characteristic.uuid == CBUUID(string: BLEIdentifiers.messageCharacteristicsUUID){
-                print("happened?")
+                print("DEBUG: happened?")
                 seatmateCharacteristic = characteristic
             }
             
@@ -202,7 +214,7 @@ extension BLECentral: CBPeripheralDelegate {
         
         if let value = characteristic.value {
             if let message = try? decoder.decode(Message.self, from: value) {
-                print(message)
+                
                 //                delegate?.didReceiveNewMessage(message: message)
                 onReceivedMessage?(message)
             }
@@ -214,7 +226,6 @@ extension BLECentral: CBPeripheralDelegate {
             print(error.localizedDescription)
             return
         }
-        
         
         print("DEBUG: updated descriptor = \(descriptor)")
     }

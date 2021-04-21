@@ -43,8 +43,8 @@ class HomeController: UIViewController {
     
     // MARK: - Selectors
     @objc private func createRoomHandler(){
-        let controller = RoomController()
-        controller.roomAdmin = true
+        let user = UUID.generateRoomID()
+        let controller = RoomController(user: user, roomAdmin: true)
         navigationController?.pushViewController(controller, animated: true)
     }
     
@@ -57,7 +57,7 @@ class HomeController: UIViewController {
     private func setupUI(){
         view.backgroundColor = .white
         title = "Home"
-        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.prefersLargeTitles = false
         
         setupLabel()
         setupDividerView()

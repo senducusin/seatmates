@@ -1,14 +1,14 @@
 //
-//  Message.swift
+//  Message\.swift
 //  Seatmates
 //
-//  Created by Jansen Ducusin on 4/19/21.
+//  Created by Jansen Ducusin on 4/21/21.
 //
 
 import Foundation
 
-struct Message:Codable{
-    var sender: String
-    var message: String
-    var timestamp: Date
+struct Message:Codable {
+    let fromID: String
+    let content: String
+    var date: Date = Date()
 }

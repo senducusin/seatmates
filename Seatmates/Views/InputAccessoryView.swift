@@ -9,8 +9,7 @@ import Foundation
 import UIKit
 
 protocol CustomInputAccessoryViewDelegate: class {
-    func inputView(_ inputView: CustomInputAccessoryView, wantsToSend message:String)
-    func inputViewCameraUtilityDidTap()
+    func inputView(_ inputView: CustomInputAccessoryView, wantsToSend content:String)
 }
 
 class CustomInputAccessoryView: UIView {
@@ -23,7 +22,7 @@ class CustomInputAccessoryView: UIView {
         textView.font = UIFont.systemFont(ofSize: 16)
         textView.isScrollEnabled = false
         textView.backgroundColor = .clear
-        textView.textColor = .white
+        textView.textColor = .black
         return textView
     }()
     
@@ -40,7 +39,7 @@ class CustomInputAccessoryView: UIView {
         let label  = UILabel()
         label.text = "Type something"
         label.font = UIFont.systemFont(ofSize: 16)
-        label.textColor = .lightGray
+        label.textColor = .darkGray
         return label
     }()
     
@@ -49,13 +48,13 @@ class CustomInputAccessoryView: UIView {
     // MARK: - Lifecycle
     override init(frame: CGRect){
         super.init(frame: frame)
-        self.autoresizingMask = .flexibleHeight
-        self.backgroundColor = .black
+        autoresizingMask = .flexibleHeight
+        backgroundColor = .white
         
-        self.layer.shadowOpacity = 0.35
-        self.layer.shadowRadius = 15
-        self.layer.shadowOffset = .init(width: 0, height: -8)
-        self.layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.15
+        layer.shadowRadius = 5
+        layer.shadowOffset = .init(width: 0, height: -3)
+        layer.shadowColor = UIColor.black.cgColor
         
         DispatchQueue.main.asyncAfter(deadline: .now()+0.01) {
             self.setupSendButton()
@@ -76,41 +75,50 @@ class CustomInputAccessoryView: UIView {
     
     // MARK: - Selectors
     @objc func sendButtonDidTap(){
-        guard !self.messageInputTextView.text.isEmpty,
-              let message = self.messageInputTextView.text
+        guard !messageInputTextView.text.isEmpty,
+              let message = messageInputTextView.text
                else {return}
-        self.delegate?.inputView(self, wantsToSend: message)
+        delegate?.inputView(self, wantsToSend: message)
     }
     
     @objc func messageInputDidChange() {
-        self.placeholderLabel.isHidden = !self.messageInputTextView.text.isEmpty
-    }
-    
-    @objc func cameraButtonDidTap(){
-        self.delegate?.inputViewCameraUtilityDidTap()
+        placeholderLabel.isHidden = !messageInputTextView.text.isEmpty
     }
     
     // MARK: - Helpers
     public func clearMessageText() {
-        self.messageInputTextView.text = nil
+        messageInputTextView.text = nil
         placeholderLabel.isHidden = false
     }
     
     private func setupSendButton(){
-        self.addSubview(self.sendButton)
-        self.sendButton.anchor(bottom: safeAreaLayoutGuide.bottomAnchor, right: rightAnchor, paddingBottom: -4, paddingRight: 12)
-        self.sendButton.setDimensions(height: 50, width: 50)
+       addSubview(sendButton)
+       sendButton.anchor(
+        bottom: safeAreaLayoutGuide.bottomAnchor,
+        right: rightAnchor,
+        paddingBottom: -4,
+        paddingRight: 5
+       )
+       sendButton.setDimensions(height: 50, width: 80)
     }
     
     private func setupMessageInputTextView(){
-        self.addSubview(self.messageInputTextView)
-        self.messageInputTextView.anchor(top: topAnchor, left: leftAnchor, bottom: safeAreaLayoutGuide.bottomAnchor, right: rightAnchor, paddingTop: 12, paddingLeft: 12, paddingBottom: 4)
+        addSubview(messageInputTextView)
+        messageInputTextView.anchor(
+            top: topAnchor,
+            left: leftAnchor,
+            bottom: safeAreaLayoutGuide.bottomAnchor,
+            right: sendButton.leftAnchor,
+            paddingTop: 12,
+            paddingLeft: 12,
+            paddingBottom: 4
+        )
     }
     
     private func setupPlaceholderLabel(){
-        self.addSubview(self.placeholderLabel)
-        self.placeholderLabel.anchor(left: messageInputTextView.leftAnchor, paddingLeft: 4)
-        self.placeholderLabel.centerY(inView: messageInputTextView)
+        addSubview(placeholderLabel)
+        placeholderLabel.anchor(left: messageInputTextView.leftAnchor, paddingLeft: 4)
+        placeholderLabel.centerY(inView: messageInputTextView)
     }
 
 }

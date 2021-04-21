@@ -14,6 +14,7 @@ class BLEPeripheral: NSObject {
     private var manager: CBPeripheralManager?
     private let encoder = JSONEncoder()
     private let decoder = JSONDecoder()
+    private let roomID: String
     
     private lazy var messageCharacteristics: CBMutableCharacteristic = {
         let characteristicUUID = CBUUID(string: BLEIdentifiers.messageCharacteristicsUUID)
@@ -21,7 +22,9 @@ class BLEPeripheral: NSObject {
     }()
     
     // MARK: - Lifecycles
-    override init() {
+    init(roomID:String) {
+        
+        self.roomID = roomID
         super.init()
         manager = CBPeripheralManager(delegate: self, queue: nil)
     }
@@ -44,7 +47,6 @@ class BLEPeripheral: NSObject {
             manager?.updateValue(payload, for: messageCharacteristics, onSubscribedCentrals: nil)
         }
     }
-    
 }
 
 // MARK: - CBPeripheralManagerDelegate
@@ -65,9 +67,11 @@ extension BLEPeripheral: CBPeripheralManagerDelegate {
             return
         }
         
+        print("DEBUG: ID>x \(roomID)")
+        
         let advertisementData: [String:Any] = [
             CBAdvertisementDataServiceUUIDsKey: [CBUUID(string: BLEIdentifiers.serviceIdentifierUUID)],
-            CBAdvertisementDataLocalNameKey: "Seatmate-\(UUID().uuidString.replacingOccurrences(of: "-", with: ""))"
+            CBAdvertisementDataLocalNameKey: "Seatmate-\(roomID)"
         ]
         
         manager?.startAdvertising(advertisementData)
@@ -106,9 +110,12 @@ extension BLEPeripheral: CBPeripheralManagerDelegate {
         
         requests.forEach { request in
             guard let data = request.value else {return}
-            if let extractedValue = try? decoder.decode(Message.self, from:data){
-                print("DEBUG: value = \(extractedValue)")
+            if let message = try? decoder.decode(Message.self, from:data){
                 
+                NotificationCenter.default
+                    .post(name: NSNotification.Name.newMessageFromPeripheral,
+                          object: nil,
+                          userInfo: ["userInfo":message])
             }
         }
     }
