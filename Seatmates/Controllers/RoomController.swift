@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NewRoomController: UIViewController{
+class RoomController: UIViewController{
     // MARK: - Properties
     var blePeripheral: BLEPeripheral?
 //    var bleCentral: BLECentralManager?

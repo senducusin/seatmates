@@ -43,7 +43,7 @@ class HomeController: UIViewController {
     
     // MARK: - Selectors
     @objc private func createRoomHandler(){
-        let controller = NewRoomController()
+        let controller = RoomController()
         controller.roomAdmin = true
         navigationController?.pushViewController(controller, animated: true)
     }

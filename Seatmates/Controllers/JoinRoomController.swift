@@ -59,7 +59,7 @@ extension JoinRoomController {
 
 extension JoinRoomController: BLECentralManagerDelegate{
     func connectionStatusDidUpdate(status: Bool) {
-        let controller = NewRoomController()
+        let controller = RoomController()
         navigationController?.pushViewController(controller, animated: true)
     }
     
